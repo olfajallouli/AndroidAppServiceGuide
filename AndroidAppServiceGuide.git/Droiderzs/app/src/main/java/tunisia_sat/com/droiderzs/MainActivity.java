@@ -33,7 +33,6 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         setUpVp(viewPager);
         tabLayout.setupWithViewPager(viewPager);
         /*tabLayout.getTabAt(0).setIcon(tabIcons[0]);

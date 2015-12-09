@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 public class Frag1 extends Fragment {
 
     public Frag1() {
-        // Required empty public constructor
+
     }
 
     @Override
