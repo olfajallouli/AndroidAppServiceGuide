@@ -7,6 +7,8 @@ public class Destination {
 	String nom;
 	String numT;//numero de telephone
 	String img,desc,adresse,type;
+
+
 	public Destination(int id, double lat, double lng, String nom, String numT,
 			String img, String desc, String adresse,String type) {
 		super();
@@ -22,6 +24,9 @@ public class Destination {
 	}
 	public int getId() {
 		return id;
+	}
+	public String getType(){
+		return type;
 	}
 	public void setId(int id) {
 		this.id = id;

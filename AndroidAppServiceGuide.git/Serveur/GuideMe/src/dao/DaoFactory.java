@@ -35,11 +35,9 @@ public class DaoFactory {
 	    }
 
 	    // Récupération du Dao
-	     public DestinationDao getBilletDao() {
+	     public DestinationDao getDestinationDao() {
 	        return new DestinationDaoImpl(this);
 	    } 
-	   public DestinationDao getCommentaireDao(){
-		   return new DestinationDaoImpl(this);
-	   }
+	
 
 }
