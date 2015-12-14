@@ -4,15 +4,16 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_bright"
     android:id="@+id/f1_id">
-<TextView
-    android:layout_width="175dp"
-    android:layout_height="wrap_content" android:text="aa111"
 
-    android:id="@+id/tt1"/>
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/text123"
+        android:text="zzzzzz"></TextView>
  <ListView
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:id="@+id/lv">
 
      </ListView>
+
 </LinearLayout>

@@ -5,6 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.List;
 
 
 /**
@@ -12,8 +16,11 @@ import android.view.ViewGroup;
  */
 public class Frag1 extends Fragment {
 
-    public Frag1() {
+    ListView listView;
+    TextView textView;
 
+    public Frag1() {
+        // Required empty public constructor
     }
 
     @Override
@@ -26,6 +33,12 @@ public class Frag1 extends Fragment {
 
         LayoutInflater lf = getActivity().getLayoutInflater();
         View view=lf.inflate(R.layout.f1, container, false);
+        listView=(ListView) view.findViewById(R.id.lv);
+        textView=(TextView)view.findViewById(R.id.text123);
+        List<Destination> list=((MainActivity)getActivity()).getListDest();
+        String ch="";
+        for(int i=0;i<list.size();i++) ch+=list.get(i).toString();
+        textView.setText(ch);
            return  view;
     }
 
