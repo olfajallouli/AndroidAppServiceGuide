@@ -2,14 +2,19 @@ package tunisia_sat.com.droiderzs;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -31,11 +36,9 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity {
     private ViewPager viewPager;
     public static FragmentManager fragmentManager;
     boolean a_jour=false;
-    private static final String url = "http://192.168.1.100:8081/GuideMe/api";// kol wa7ed wel ip mte3ou
+    private static final String url = "http://192.168.23.1:8081/GuideMe/api";// kol wa7ed wel ip mte3ou
     ArrayList<Destination> listDest;
-
-
-
+    int []tabIcons={R.drawable.rest,R.drawable.coffe,R.drawable.hotel,R.drawable.club} ;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -47,22 +50,21 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /*tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        tabLayout.getTabAt(2).setIcon(tabIcons[2]);*/
+
         new GetDestination(this,url).execute();
 
     }
 
     void setUpVp(ViewPager viewPager){
         ViewPagerAdapter adapter=new ViewPagerAdapter( getSupportFragmentManager());
-        adapter.addFrag( new Frag1(), "restaurants");
-        adapter.addFrag(new Frag1(), "cafées");
+        adapter.addFrag( new Frag1(),null);
+        adapter.addFrag(new Frag1(),null);
         adapter.addFrag(new Frag1(), "cinemas");
         adapter.addFrag(new Frag1(), "hotels");
         viewPager.setAdapter(adapter);
+
     }
 
 
@@ -91,14 +93,13 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-             return mFragmentTitleList.get(position);
-           /* Drawable image = ViewPagerAct.this.getResources().getDrawable(tabIcons[position]);
+            // return mFragmentTitleList.get(position);
+            Drawable image = ContextCompat.getDrawable(MainActivity.this, tabIcons[position]);
             image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
-            // Replace blank spaces with image icon
-            SpannableString sb = new SpannableString("   " + mFragmentTitleList.get(position));
+            SpannableString sb = new SpannableString(" ");
             ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
             sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            return sb;*/
+            return sb;
         }
     }
     private class GetDestination extends AsyncTask<Void, Void, ArrayList<Destination>> {
@@ -179,7 +180,9 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity {
                 pDialog.dismiss();
             setUpVp(viewPager);
             tabLayout.setupWithViewPager(viewPager);
-
+            for (int i = 0; i < tabLayout.getTabCount(); i++) {
+                tabLayout.getTabAt(i).setIcon(tabIcons[i]);
+            }
 
             if(result!=null){
                 Toast.makeText(context, "données recus !!", Toast.LENGTH_SHORT).show();

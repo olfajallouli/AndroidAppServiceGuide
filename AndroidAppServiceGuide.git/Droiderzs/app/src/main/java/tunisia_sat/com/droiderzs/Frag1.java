@@ -37,8 +37,10 @@ public class Frag1 extends Fragment {
         textView=(TextView)view.findViewById(R.id.text123);
         List<Destination> list=((MainActivity)getActivity()).getListDest();
         String ch="";
-        for(int i=0;i<list.size();i++) ch+=list.get(i).toString();
-        textView.setText(ch);
+        if(list!=null) {
+            for (int i = 0; i < list.size(); i++) ch += list.get(i).toString();
+            textView.setText(ch);
+        }
            return  view;
     }
 

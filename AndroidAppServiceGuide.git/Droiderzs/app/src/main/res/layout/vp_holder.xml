@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             app:tabMode="fixed"
             app:tabGravity="fill"
+            app:popupTheme="@style/MyCustomTabLayout"
             />
     </android.support.design.widget.AppBarLayout>
 
