@@ -36,7 +36,7 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity {
     private ViewPager viewPager;
     public static FragmentManager fragmentManager;
     boolean a_jour=false;
-    private static final String url = "http://192.168.23.1:8081/GuideMe/api";// kol wa7ed wel ip mte3ou
+    private static final String url = "http://197.28.186.151:8081/GuideMe/api";// kol wa7ed wel ip mte3ou
     ArrayList<Destination> listDest;
     int []tabIcons={R.drawable.rest,R.drawable.coffe,R.drawable.hotel,R.drawable.club} ;
 
